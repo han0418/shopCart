@@ -28,3 +28,11 @@
         </div>
     </div>
 @endsection
+
+@section('scriptsAfterJs')
+    <script>
+        $(document).ready(function() {
+            @include('product.add_to_cart')
+        });
+    </script>
+@endsection
