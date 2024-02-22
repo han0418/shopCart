@@ -13,6 +13,18 @@
                     <button class="btn btn-primary btn-add-to-cart" data-id="{{ $product->id }}">加入購物車</button>
                 </div>
             </div>
+            @if ($loop->iteration % 2 == 0)
+                <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>
+            @endif
+            @if ($loop->iteration % 3 == 0)
+                <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md--></div>
+            @endif
+            @if ($loop->iteration % 4 == 0)
+                <div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 4 on lg--></div>
+            @endif
+            @if ($loop->iteration % 5 == 0)
+                <div class="w-100 d-none d-xl-block"><!-- wrap every 5 on xl--></div>
+            @endif
         @empty
             <div class="card mb-4">
                 <div class="card-body">
