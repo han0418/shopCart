@@ -5,7 +5,7 @@ $('.btn-add-to-cart').click(function () {
         amount: $('input[name=amount]').val(),
     })
     .then(function () { // 請求成功時執行：
-        swal('加入購物車成功', '', 'success')
+        swal('Success Add To Cart', '', 'success')
     }, function (error) { // 請求失敗時執行：
 
         console.log('error.response.status = ' + error.response.status);
@@ -19,11 +19,11 @@ $('.btn-add-to-cart').click(function () {
             html += '</div>';
             swal({content: $(html)[0], icon: 'error'});
         } else if(error.response.status === 500) {
-            swal('系統錯誤', '', 'error');
+            swal('Something Error', '', 'error');
         }
 
         @guest
-            swal('請先登入', '', 'error');
+            swal('Please Login', '', 'error');
         @endguest
     })
 });
