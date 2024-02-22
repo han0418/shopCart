@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/product', 'ProductController@index')->name('index');
+Route::get('/product/{product}', 'ProductController@show')->name('product.show');
 
 Auth::routes();
 
