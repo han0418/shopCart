@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -37,7 +40,34 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request->user();
+        DB::transaction(function () use ($user, $request) {
+            $order = new Order;
+            $order->address = $request->address;
+            $order->total = 0;
+            $order->closed = 0;
+            $order->user_id = $user->id;
+            $order->save();
+
+            $total = 0;
+            foreach ($request->amount as $product_id => $amount) {
+                $product = Product::find($product_id);
+                $item = new OrderItem;
+                $item->order_id = $order->id;
+                $item->product_id = $product_id;
+                $item->amount = $amount;
+                $item->price = $product->price;
+                $item->save();
+                $total += $product->price * $amount;
+            }
+
+            $order->total = $total;
+            $order->update();
+
+            $user->carts()->delete();
+        });
+
+        return redirect()->route('order.index');
     }
 
     /**
