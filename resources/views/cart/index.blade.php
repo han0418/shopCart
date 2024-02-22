@@ -4,8 +4,9 @@
     @php
         $total = 0;
     @endphp
-    <h1>{{ $user->name }} Cart</h1>
-
+    <h1>My Cart</h1>
+    <form action="{{ route('order.store') }}" method="post" id="order-form">
+        @csrf
     <table class="table table-striped">
         <tr>
             <th colspan=2>Product Name</th>
@@ -71,7 +72,16 @@
             <th>dollars</th>
         </tr>
     </table>
-
+    <div class="form-group row">
+        <label class="col-form-label col-sm-3 text-md-right">Address :</label>
+        <div class="col-sm-7">
+            <input type="text" class="form-control" name="address" value="{{ $user->address }}" placeholder="{{ $user->address }}">
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </div>
+</form>
 @endsection
 
 @section('scriptsAfterJs')
