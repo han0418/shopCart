@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CustomException;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -42,12 +43,20 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $id = $product->id;
+        $product = Product::find($id);
+        if (!$product) {
+            throw new CustomException('This product does not exist.');
+        }
+        if (!$product->on_sale) {
+            throw new CustomException('This product is not on the shelves.');
+        }
+        return view('product.show', compact('product'));
     }
 
     /**
