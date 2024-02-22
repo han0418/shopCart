@@ -88,11 +88,13 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy($id, Request $request)
     {
-        //
+        $request->user()->carts()->where('product_id', $id)->delete();
+        return [];
     }
 }
