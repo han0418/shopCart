@@ -37,7 +37,18 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($cart = $request->user()->carts()->where('product_id', $request->product_id)->first()) {
+            $cart->update([
+                'amount' => $cart->amount + $request->amount,
+            ]);
+        } else {
+            Cart::create([
+                'user_id'    => $request->user()->id,
+                'product_id' => $request->product_id,
+                'amount'     => $request->amount,
+            ]);
+        }
+        return [];
     }
 
     /**
