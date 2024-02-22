@@ -34,7 +34,7 @@
                                     <h5>{{ $item->product->title }}</h5>
                                 </a>
                                 @if(!$item->product->on_sale)
-                                    <div class="warning">This item has been discontinued.</div>
+                                    <div class="warning">This product is not on the shelves.</div>
                                 @endif
                             </td>
                             <td class="text-right">

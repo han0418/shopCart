@@ -9,17 +9,14 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="h2">{{ $product->title }}</div>
-                    <div class="h3">特價 {{ $product->price }}元</div>
+                    <div class="h3"> {{ $product->price }}dollars</div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">數量</span>
+                            <span class="input-group-text">Quantity</span>
                         </div>
                         <input type="text" class="form-control input-sm" name="amount" value="1">
                         <div class="input-group-append">
-                            <span class="input-group-text">件</span>
-                        </div>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary btn-add-to-cart" data-id="{{ $product->id }}">加入購物車</button>
+                            <button class="btn btn-primary btn-add-to-cart" data-id="{{ $product->id }}">Add To Cart</button>
                         </div>
                     </div>                        
                     {!! $product->description !!}

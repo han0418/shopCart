@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-footer text-center">
                     ${{ $product->price }}
-                    <button class="btn btn-primary btn-add-to-cart" data-id="{{ $product->id }}">加入購物車</button>
+                    <button class="btn btn-primary btn-add-to-cart" data-id="{{ $product->id }}">Add To Cart</button>
                 </div>
             </div>
             @if ($loop->iteration % 2 == 0)
