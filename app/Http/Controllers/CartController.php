@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Http\Requests\CartRequest;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -32,10 +33,10 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CartRequest $request)
     {
         if ($cart = $request->user()->carts()->where('product_id', $request->product_id)->first()) {
             $cart->update([
