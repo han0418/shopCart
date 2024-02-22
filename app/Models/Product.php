@@ -25,4 +25,9 @@ class Product extends Model
         }
         return Storage::disk('public')->get($this->attributes['image']);
     }
+
+    public function carts()
+    {
+        return $this->hasMany('App\Models\Cart');
+    }
 }
