@@ -82,6 +82,9 @@
         </div>
     </div>
 </form>
+<div class="text-center">
+    <a class="btn btn-primary" href="/product">Back to shop</a>
+</div>
 @endsection
 
 @section('scriptsAfterJs')

@@ -62,4 +62,8 @@
         </div>
     @endforelse
 
+    <div class="text-center">
+        <a class="btn btn-primary" href="/product">Back to shop</a>
+    </div>
+
 @endsection
