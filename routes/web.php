@@ -28,6 +28,9 @@ Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
 Route::get('/order', 'OrderController@index')->name('order.index');
 Route::post('/order/store', 'OrderController@store')->name('order.store');
 
+Route::post('/callback', 'OrderController@callback')->name('callback');
+Route::get('/return', 'OrderController@redirectFromECpay');
+
 Auth::routes();
 
 Route::get('/home', function () {
