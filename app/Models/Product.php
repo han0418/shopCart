@@ -23,7 +23,7 @@ class Product extends Model
         if (Str::startsWith($this->attributes['image'], ['http://', 'https://'])) {
             return $this->attributes['image'];
         }
-        return Storage::disk('public')->get($this->attributes['image']);
+        return Storage::url($this->attributes['image']);
     }
 
     public function carts()
