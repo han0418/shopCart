@@ -38,13 +38,13 @@
                                 @endif
                             </td>
                             <td class="text-right">
-                                {{ $item->product->price }} dollars
+                                {{ $item->product->price }}
                             </td>
                             <td class="text-center">
                                 {{ $item->amount }}
                             </td>
                             <td class="text-right">
-                                {{ $item->product->price * $item->amount }} dollars
+                                {{ $item->product->price * $item->amount }}
                             </td>
                         </tr>
                     @endforeach
@@ -61,7 +61,6 @@
             <h2>No order</h2>
         </div>
     @endforelse
-
     <div class="text-center">
         <a class="btn btn-primary" href="/product">Back to shop</a>
     </div>
